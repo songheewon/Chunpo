@@ -1,0 +1,11 @@
+{{#if cardFormat}}
+  {{#match cardFormat "=" "small"}}
+    {{> post-card/small }}
+  {{else match cardFormat "=" "big"}}
+    {{> post-card/big }}
+  {{else}}
+    {{> post-card/default }}
+  {{/match}}
+{{else}}
+  {{> post-card/default }}
+{{/if}}

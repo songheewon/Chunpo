@@ -1,0 +1,207 @@
+{{!< default}}
+
+{{#contentFor 'title'}}{{ meta_title }}{{/contentFor}}
+
+{{!-- [Home Hero Section] --}}
+<div class="c-home-hero__outer">
+  <div class="o-grid">
+    <div class="c-home-hero">
+      <div class="c-home-hero-content">
+        {{> home/subscribe-box }}
+      </div>
+      <div class="c-home-hero-media__wrap">
+        <div class="c-home-hero-media__box">
+          <div class="c-home-hero-media">
+            <img class="c-home-hero-image" src="{{asset 'images/home-hero-media-default.jpg'}}" alt="">
+          </div>
+          <div class="c-home-hero-media__shadow"></div>
+          <div class="c-home-hero-media__shadow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- [Home Top Section] --}}
+<section class="c-home-top-section">
+  <div class="o-grid">
+    <div class="c-home-top-section__container">
+
+      <section class="c-home-top-feature">
+
+        {{!-- [Home Top Section] Main Post --}}
+        {{#get "posts" limit=1 filter="featured:true" include="authors,tags" order="published_at desc" as |items|}}
+        {{#if items}}
+        {{#foreach items}}
+        <div class="c-home-top-main">
+          {{> post-card cardFormat="big" }}
+        </div>
+        {{/foreach}}
+        {{/if}}
+        {{/get}}
+
+        {{!-- [Home Top Section] Posts --}}
+        {{#get "posts" limit=4 filter="featured:true" include="authors,tags" order="published_at desc" as |items|}}
+        {{#if items}}
+        <div class="c-home-top-posts__wrap">
+          <div class="c-home-top-posts">
+          {{#foreach items from="2"}}
+            {{> post-card }}
+          {{/foreach}}
+          </div>
+        </div>
+        {{/if}}
+        {{/get}}
+
+        {{!-- [Home Top Section] Promotion --}}
+        <div class="c-home-top-promotion c-home-top-promotion--skeleton">프로모션 영역</div>
+      </section>
+
+      <section class="c-home-top-side">
+        <div class="c-home-top-side__wrap">
+          <div class="c-home-top-side__title">인기 있는 콘텐츠</div>
+
+          {{!-- {{#get "posts" filter="published_at:>=now-30d" include="tags,authors" limit="5" order="view_count desc" as |items|}} --}}
+          {{#get "posts" include="tags,authors" limit="5" order="view_count desc" as |items|}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach items}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        </div>
+
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="c-home-shop-section">
+  <div class="c-home-products-carousel">
+    <div class="o-grid">
+      <div class="o-grid__col o-grid__col--full">
+        {{> common/products/carousel-section which="home" nav="true" }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- [Home Category Section 1] --}}
+<div class="c-home-category-section">
+  <div class="o-grid">
+    <div class="c-home-category-section__container">
+
+      <section class="c-home-category-main">
+
+      {{!-- Post tag section --}}
+      {{#if @custom.tag_slugs_for_home_sections}}
+      {{#get "tags" filter="slug:[{{@custom.tag_slugs_for_home_sections}}]" include="count.posts" }}
+      {{#if tags}}
+        <div class="c-home-categories">
+        {{#foreach tags}}
+          <div class="c-home-category-box">
+            <div class="c-home-category-box__header">
+
+              <div class="c-home-category-box__title">{{name}}</div>
+              <div class="c-home-category-box__action">
+                <a href="{{url}}">전체보기</a>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
+            </div>
+
+            <div class="c-home-category-box__main">
+            {{#get "posts" filter="tag:{{slug}}" include="tags,authors" limit="6" order="published_at desc" as |posts|}}
+            {{#if posts}}
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" disableMeta="true"}}
+              {{/foreach}}
+            {{/if}}
+            {{/get}}
+            </div>
+          </div>
+        {{/foreach}}
+        </div>
+      {{/if}}
+      {{/get}}
+      {{/if}}
+
+        {{!-- [Home Category Section] Promotion --}}
+        <div class="c-home-category-promotion__wrap">
+          <div class="c-home-category-promotion c-home-category-promotion--skeleton">프로모션 영역</div>
+        </div>
+      </section>
+
+      <section class="c-home-category-side">
+        <div class="c-home-subscribe-widget__wrap">
+          <div class="c-home-subscribe-widget">
+            {{> home/subscribe-box }}
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+{{!-- [Home Category Section 2] --}}
+<div class="c-home-category-section c-home-category-section__two">
+  <div class="o-grid">
+    <div class="c-home-category-section__container">
+
+      <section class="c-home-category-main">
+
+      {{!-- Post tag section --}}
+      {{#if @custom.tag_slugs_for_home_sections_2}}
+      {{#get "tags" filter="slug:[{{@custom.tag_slugs_for_home_sections_2}}]" include="count.posts" }}
+      {{#if tags}}
+        <div class="c-home-categories">
+        {{#foreach tags}}
+          {{#if @first}}
+          <div class="c-home-categories__row">
+          {{else}}
+          {{#if @odd}}
+          </div>
+          <div class="c-home-categories__row">
+          {{/if}}
+          {{/if}}
+            <div class="c-home-category-box">
+              <div class="c-home-category-box__header">
+                <div class="c-home-category-box__title">
+                  <a href="{{url absolute="true"}}">{{name}}</a>
+                </div>
+              </div>
+
+              <div class="c-home-category-box__main">
+              {{#get "posts" filter="tag:{{slug}}" include="tags,authors" limit="3" order="published_at desc" as |posts|}}
+              {{#if posts}}
+                {{#foreach posts}}
+                  {{> post-card cardFormat="small" disableMeta="true" disableMedia="true"}}
+                {{/foreach}}
+              {{/if}}
+              {{/get}}
+              </div>
+            </div>
+
+          {{#if @last}}
+          </div>
+          {{/if}}
+        {{/foreach}}
+        </div>
+      {{/if}}
+      {{/get}}
+      {{/if}}
+
+      </section>
+
+      <section class="c-home-category-side">
+      </section>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,294 @@
+/*------------------------------------*\
+  Components > Post Card
+\*------------------------------------*/
+
+.c-post-card {
+  display: flex;
+  column-gap: 20px;
+  overflow: hidden;
+
+  &__header {
+    width: 112px;
+    flex: 0 0 112px;
+
+    @include mq($from: landscape) {
+      width: 274px;
+      flex: 0 0 274px;
+    }
+  }
+
+  &__main {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @include mq($from: landscape) {
+      gap: 20px;
+    }
+  }
+}
+
+.c-post-card {
+  &__link {
+    &--cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+  }
+}
+
+.c-post-card {
+  &__tag {
+    &s {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    &--chip {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      height: 20px;
+      min-width: 40px;
+      border-radius: 2px;
+      background: #E9E9EE;
+
+      color: #333335;
+
+      font-size: 11px;
+      font-weight: 500;
+
+      @include ellipsis(1);
+    }
+  }
+}
+
+.c-post-card {
+  &__author {
+    &--name {
+      color: #B3B3C3;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    &-image {
+      &--wrap {
+        border-radius: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        background-color: #d5d5d5;
+        width: 36px;
+        height: 36px;
+      }
+
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
+}
+
+.c-post-card {
+  &__date {
+
+  }
+}
+
+.c-post-card {
+  &__media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+
+    border: 1px solid #D1D1DE;
+    background: #E8DCC6;
+  }
+
+  &__image {
+    &--wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.c-post-card {
+  &__title {
+    flex-grow: 1;
+
+    color: var(--color-text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 22px;
+
+    @include ellipsis(2);
+
+    @include mq($from: landscape) {
+      font-size: 22px;
+      line-height: 30px;
+
+      flex-grow: 0;
+    }
+  }
+
+  &__reading-time {
+    display: none;
+
+    color: #68A1AA;
+    font-size: 13px;
+    font-weight: 700;
+
+    @include mq($from: landscape) {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+/* Small */
+.c-post-card--small {
+  .c-post-card {
+    &__header {
+      width: 112px;
+      flex: 0 0 112px;
+    }
+
+    &__title {
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    &__main {
+      gap: 6px;
+    }
+  }
+}
+
+/* Big */
+.c-post-card--big {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &.c-post-card {
+    flex-direction: column;
+    column-gap: 0;
+  }
+
+  .c-post-card {
+    &__header {
+      width: 100%;
+      flex: 0 0 100%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__main {
+      gap: 16px;
+
+      @include mq($from: landscape) {
+        gap: 28px;
+      }
+    }
+  }
+
+  .c-post-card__meta {
+    display: flex;
+    gap: 10px;
+
+    &--header {
+      display: flex;
+      align-items: center;
+    }
+
+    &--main {
+      &__bottom {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        color: #B3B3C3;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .c-post-card {
+    &__media {
+      display: none;
+
+      @include mq($from: landscape) {
+        display: block;
+      }
+
+      &--adjust {
+        display: block;
+
+        @include mq($from: landscape) {
+          display: none;
+        }
+      }
+    }
+
+    &__author {
+      &--name {
+        color: var(--color-text-primary);
+        font-size: 13px;
+        font-weight: 700;
+      }
+    }
+
+    &__title {
+      color: var(--color-text-primary);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 30px;
+      letter-spacing: -1px;
+
+      @include ellipsis(2);
+    }
+
+    &__excerpt {
+      color: var(--color-text-primary);
+
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 25px;
+      letter-spacing: -0.3px;
+
+      @include ellipsis(4);
+    }
+
+    &__reading-time {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+
+}

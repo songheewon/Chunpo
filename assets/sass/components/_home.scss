@@ -1,0 +1,757 @@
+/*------------------------------------*\
+  Components > Hero
+\*------------------------------------*/
+
+.c-home-section {
+
+  &s {
+    padding: 40px 0;
+
+    @include mq($from: tablet) {
+      padding-bottom: 0;
+    }
+
+    &--post {
+      padding-bottom: 0;
+    }
+
+    + .c-home-sections {
+      padding-top: 0;
+    }
+  }
+
+  padding: 30px 0 40px 0;
+
+  &__wrap {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+  &__header {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    @include mq($from: tablet) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 32px;
+    letter-spacing: -1px;
+
+    @include mq($from: tablet) {
+      font-size: 22px;
+    }
+
+
+    &--link {
+      display: flex;
+      align-items: center;
+      column-gap: 4px;
+
+
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+    }
+  }
+
+  &__more {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+
+    &--link {
+      display: flex;
+      align-items: center;
+
+      span {
+        flex-shrink: 0;
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+.c-home-top {
+  display: grid;
+  width: 100%;
+
+  @include mq($from: desktop) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 80px;
+  }
+
+  &__outer {
+    padding-top: 32px;
+
+    @include mq($from: desktop) {
+      padding-top: 80px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 2px;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 24px;
+    letter-spacing: -1px;
+
+    @include mq($from: tablet) {
+      font-size: 22px;
+    }
+
+    @include mq($from: desktop) {
+      font-size: 18px;
+    }
+
+    &--link {
+      display: flex;
+      align-items: center;
+      column-gap: 4px;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+    }
+  }
+
+  &__more {
+    &--link {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 18px;
+      letter-spacing: -0.02em;
+
+      display: flex;
+      align-items: center;
+
+      span {
+        flex-shrink: 0;
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__main {
+
+  }
+
+
+}
+
+.c-home-featured {
+  height: 100%;
+
+  &__col {
+
+    display: flex;
+    flex-direction: column;
+
+    .c-home-top__main {
+      padding: 14px 0;
+      flex-grow: 1;
+    }
+  }
+
+  @include mq($from: desktop) {
+    min-height: 346px;
+  }
+
+}
+
+.c-home-popular {
+
+  &__col {
+    padding-top: 30px;
+
+    @include mq($from: desktop) {
+      padding-top: 0;
+    }
+
+    &::before {
+      display: block;
+      content: '';
+      width: calc(100% + 40px);
+      margin-left: -20px;
+      height: 1px;
+      background-color: rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+
+      @include mq($from: tablet) {
+        width: calc(100% + 48px);
+      }
+
+      @include mq($from: desktop) {
+        display: none;
+      }
+    }
+  }
+
+  > div {
+    padding: 14px 0;
+  }
+
+  > div:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .c-card__media {
+    @include mq($from: desktop) {
+      width: 35%;
+    }
+  }
+}
+
+.c-home-promotion {
+  width: 100%;
+  border-radius: 20px;
+  padding: 30px 20px;
+
+  @include mq($from: tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 100px;
+  }
+
+  &__section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @include mq($from: desktop) {
+      border-top: 0px;
+      padding-bottom: 60px;
+    }
+  }
+
+  &__subject {
+    color: #fff;
+    margin-bottom: 26px;
+
+    @include mq($from: tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+
+    @include ellipsis(2);
+
+    @include mq($from: tablet) {
+      font-size: 25px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+
+    @include mq($from: tablet) {
+      font-size: 18px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 24px;
+
+    max-width: 250px;
+    width: 100%;
+    height: 45px;
+
+    background: #000000;
+    color: #fff;
+    border-radius: 100rem;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.8;
+    letter-spacing: -0.01em;
+
+    @include attention() {
+      background: #707070;
+    }
+
+    @include ellipsis(1);
+
+    @include mq($from: tablet) {
+      height: 54px;
+      min-width: 250px;
+    }
+  }
+
+
+}
+
+
+.c-home-hero {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+
+  @include mq($from: desktop) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    height: 500px;
+  }
+
+  &__outer {
+    // background-color: var(--home-hero-background-color);
+    background-color: #E4EDE9;
+  }
+}
+
+.c-home-hero-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include mq($from: desktop) {
+    padding-right: 60px;
+  }
+
+  .c-home-subscribe-box {
+    width: 100%;
+  }
+}
+
+.c-home-hero-media {
+  &__wrap {
+    display: none;
+
+    @include mq($from: desktop) {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+  }
+
+  &__box {
+    position: relative;
+    width: 412px;
+    height: 400px;
+  }
+
+  position: relative;
+  width: 386px;
+  height: 400px;
+  border-radius: 30px 30px 0px 0px;
+  background: #D9D9D9;
+  z-index: 1;
+  background-image: url(assets/images/home-hero-media-background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 13px;
+    width: 386px;
+    height: 400px;
+    border-radius: 30px 30px 0px 0px;
+    border: 2px solid rgba(104, 161, 170, 0.50);
+    border-bottom: 0px;
+    background: #E4EDE9;
+
+    &:nth-child(2) {
+      left: 26px;
+    }
+  }
+}
+
+.c-home-hero-image {
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.c-home-subscribe-box {
+  &__heading {
+    color: #333335;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    color: #333335;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -1px;
+
+    margin-bottom: 70px;
+
+    @include mq($from: desktop) {
+      margin-bottom: 88px;
+    }
+  }
+
+
+  .c-subscribe-form {
+    .c-form-group__input {
+      border-radius: 5px;
+      border: 1px solid #B3B3C3;
+      background: #F9F9F9;
+      margin-bottom: 18px;
+
+      @include mq($from: tablet) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+// Home Top
+.c-home-top-section {
+  padding-top: 20px;
+  padding-bottom: 60px;
+
+  @include mq($from: desktop) {
+    padding-top: 100px;
+  }
+}
+
+.c-home-top-section__container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include mq($from: desktop) {
+    flex-direction: row;
+    position: relative;
+  }
+}
+
+.c-home-top-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+
+  @include mq($from: desktop) {
+    gap: 28px;
+
+    .c-home-top-main { order: 1; }
+    .c-home-top-posts__wrap { order: 3; }
+    .c-home-top-promotion { order: 2; }
+  }
+}
+
+.c-home-top-posts {
+  &__wrap {
+    @include mq($from: desktop) {
+      padding-top: 20px;
+    }
+  }
+
+  .c-post-card {
+    border-top: 1px solid #E9E9EE;
+    padding: 20px 0;
+  }
+}
+
+.c-home-top-promotion {
+  &--skeleton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    background: #E4EDE9;
+
+    color: #B3B3C3;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    height: 76px;
+
+    @include mq($from: desktop) {
+      height: 150px;
+    }
+  }
+}
+
+.c-home-top-side__wrap {
+  @include mq($from: desktop) {
+    width: 345px;
+    flex: 0 0 345px;
+
+    position: sticky;
+    top: 20px;
+  }
+}
+
+.c-home-top-side__title {
+  color: #9696A1;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.c-home-top-side__posts {
+  .c-post-card {
+    border-top: 1px solid #E9E9EE;
+    padding: 20px 0;
+
+    @include mq($from: desktop) {
+      padding: 30px 0;
+    }
+  }
+
+  .c-post-card:first-child {
+    border-top: 0;
+  }
+}
+
+.c-home-products-carousel {
+  .o-grid__col {
+    padding: 0;
+    border-top: 1px solid #E9E9EE;
+  }
+
+  .s-products-carousel-section {
+    padding: 40px 0;
+  }
+}
+
+// Home Category Section
+.c-home-category-section {
+  padding: 20px 0;
+
+  @include mq($from: desktop) {
+    padding: 80px 0 10px;
+  }
+
+  &__container {
+    width: 100%;
+
+    @include mq($from: desktop) {
+      display: flex;
+      gap: 56px;
+    }
+  }
+}
+
+.c-home-category-side {
+  @include mq($from: desktop) {
+    width: 350px;
+    flex: 0 0 350px;
+
+    padding-bottom: 50px;
+  }
+}
+
+
+.c-home-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include mq($from: landscape) {
+    gap: 60px;
+  }
+}
+
+.c-home-category-box {
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding-bottom: 26px;
+
+    @include mq($from: landscape) {
+      padding-bottom: 14px;
+    }
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -1px;
+
+    @include ellipsis(1);
+  }
+
+  &__action {
+    flex-shrink: 0;
+
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+
+    display: flex;
+    align-items: center;
+
+    svg {
+      height: 14px;
+    }
+  }
+
+  &__main {
+    display: grid;
+    gap: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #D9D9D9;
+
+    @include mq($from: landscape) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding: 32px 0;
+      gap: 32px 80px;
+    }
+  }
+}
+
+
+.c-home-category-promotion {
+  &__wrap {
+    padding: 20px 0 40px 0;
+
+    @include mq($from: landscape) {
+      padding: 50px 0;
+    }
+  }
+
+  &--skeleton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    background: #E4EDE9;
+
+    color: #B3B3C3;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    height: 76px;
+
+    @include mq($from: desktop) {
+      height: 150px;
+    }
+  }
+}
+
+.c-home-subscribe-widget {
+  &__wrap {
+    position: sticky;
+    top: 20px;
+  }
+
+  border-radius: 20px;
+  background: #D8DDE1;
+  padding: 40px 30px 32px ;
+
+  .c-home-subscribe-box__heading {
+    font-size: 24px;
+  }
+
+  .c-home-subscribe-box__description {
+    font-size: 16px;
+    margin-bottom: 50px;
+  }
+
+  .c-form-group {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .c-form-group__btn {
+    margin-left: 0;
+  }
+}
+
+.c-home-category-section__two {
+  padding: 50px 0 30px 0;
+
+  @include mq($from: desktop) {
+    padding: 10px 0 60px 0;
+  }
+
+  .c-home-category-box__main {
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    @include mq($from: landscape) {
+      padding: 20px 0;
+    }
+  }
+
+  .c-home-categories {
+    gap: 0;
+  }
+
+  .c-home-category-box {
+    padding: 30px 0;
+    border-top: 1px solid #D9D9D9;
+
+    @include mq($from: landscape) {
+      padding: 30px 0;
+      border-top: 0;
+    }
+  }
+
+  .c-home-category-box__header {
+    padding-bottom: 0px;
+  }
+}
+
+.c-home-categories__row {
+  @include mq($from: landscape) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 60px;
+
+    border-top: 1px solid #D9D9D9;
+  }
+}
