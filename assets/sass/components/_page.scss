@@ -14,6 +14,10 @@
 
 .post-template main {
   padding: 40px 0;
+
+  @include mq($from: desktop) {
+    padding-top: 100px;
+  }
 }
 
 .page-template main {
@@ -48,6 +52,8 @@
 
   @include mq($from: desktop) {
     align-items: flex-start;
+
+    max-width: calc(100% - 56px - 350px);
   }
 }
 

@@ -155,8 +155,8 @@
     display: none;
 
     color: #68A1AA;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 500;
 
     @include mq($from: landscape) {
       display: flex;
@@ -264,9 +264,9 @@
 
     &__title {
       color: var(--color-text-primary);
-      font-size: 22px;
+      font-size: 32px;
       font-weight: 700;
-      line-height: 30px;
+      line-height: 40px;
       letter-spacing: -1px;
 
       @include ellipsis(2);

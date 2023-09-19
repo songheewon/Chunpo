@@ -16,7 +16,7 @@
     {{#if tags}}
     <div class="c-post-card__meta">
       <div class="c-post-card__tags">
-      {{#foreach tags}}
+      {{#foreach tags limit="3"}}
         <a href="{{url absolute="true"}}" class="c-post-card__tag--chip">{{name}}</a>
       {{/foreach}}
       </div>
