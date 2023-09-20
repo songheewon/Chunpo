@@ -338,3 +338,9 @@
     display: none;
   }
 }
+
+.o-header .c-search {
+  @include mq($until: desktop) {
+    display: none;
+  }
+}

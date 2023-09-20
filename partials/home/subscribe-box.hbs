@@ -1,5 +1,37 @@
 <div class="c-home-subscribe-box">
-    <h3 class="c-home-subscribe-box__heading">{{t '{siteTitle} Newsletter' siteTitle=@site.title}}</h3>
-    <p class="c-home-subscribe-box__description">{{t 'Become a subscriber to access all of our content.' }}</p>
+    <h3 class="c-home-subscribe-box__heading">
+    {{#if widget}}
+      {{#if @site.subscription_form_title}}
+        {{@site.subscription_form_title}}
+      {{else}}
+        {{#if @custom.hero_title}}
+          {{@custom.hero_title}}
+        {{else}}
+          {{t '{siteTitle} Newsletter' siteTitle=@site.title}}
+        {{/if}}
+      {{/if}}
+    {{else}}
+      {{#if @site.brand_site_title}}
+        {{@site.brand_site_title}}
+      {{else}}
+        {{#if @custom.hero_title}}
+          {{@custom.hero_title}}
+        {{else}}
+          {{t '{siteTitle} Newsletter' siteTitle=@site.title}}
+        {{/if}}
+      {{/if}}
+    {{/if}}
+    </h3>
+    <p class="c-home-subscribe-box__description">
+    {{#if @site.brand_site_description}}
+      {{@site.brand_site_description}}
+    {{else}}
+      {{#if @custom.hero_description}}
+        {{@custom.hero_description}}
+      {{else}}
+        {{t 'Become a subscriber to access all of our content.' }}
+      {{/if}}
+    {{/if}}
+    </p>
     {{> home/subscribe-form inputLabel='subscribe-box'}}
 </div>

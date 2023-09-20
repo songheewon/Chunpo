@@ -569,15 +569,15 @@
 
     @include mq($from: desktop) {
       display: flex;
-      gap: 56px;
+      gap: 80px;
     }
   }
 }
 
 .c-home-category-side {
   @include mq($from: desktop) {
-    width: 350px;
-    flex: 0 0 350px;
+    width: 345px;
+    flex: 0 0 345px;
 
     padding-bottom: 50px;
   }
@@ -767,4 +767,8 @@
 
     border-top: 1px solid #D9D9D9;
   }
+}
+
+.c-home-shop-section {
+  overflow-x: hidden;
 }

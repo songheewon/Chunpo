@@ -58,37 +58,211 @@
       </section>
 
       <section class="c-home-top-side">
+      {{#if @site.visible_feature_content_section}}
         <div class="c-home-top-side__wrap">
-          <div class="c-home-top-side__title">인기 있는 콘텐츠</div>
+          <div class="c-home-top-side__title">
+          {{#if @site.feature_content_section_title}}
+            {{@site.feature_content_section_title}}
+          {{else}}
 
-          {{!-- {{#get "posts" filter="published_at:>=now-30d" include="tags,authors" limit="5" order="view_count desc" as |items|}} --}}
-          {{#get "posts" include="tags,authors" limit="5" order="view_count desc" as |items|}}
+            {{#if @site.feature_content_section_sort_type}}
+              {{!-- 디자인 커스텀 --}}
+              {{#match @site.feature_content_section_sort_type "=" "poplularest"}}
+              인기 있는 콘텐츠
+              {{else}}
+              최신 콘텐츠
+              {{/match}}
+            {{else}}
+              {{#if @custom.posts_widget_title}}
+                {{@custom.posts_widget_title}}
+              {{else}}
+                {{!-- 테마 커스텀 --}}
+                {{#match @custom.posts_widget_order "=" "인기순"}}
+                최신 콘텐츠
+                {{else}}
+                인기 있는 콘텐츠
+                {{/match}}
+              {{/if}}
+            {{/if}}
+          {{/if}}
+          </div>
+
+        {{#if @site.feature_content_section_sort_type}}
+        {{!--  --}}
+        {{#match @site.feature_content_section_sort_type "=" "poplularest"}}
+          {{#get "posts" filter="published_at:>=now-30d" include="tags,authors" limit="5" order="view_count desc"}}
           {{#if posts}}
           <div class="c-home-top-side__posts--wrap">
             <div class="c-home-top-side__posts">
-              {{#foreach items}}
+              {{#foreach posts}}
                 {{> post-card cardFormat="small" }}
               {{/foreach}}
             </div>
           </div>
           {{/if}}
           {{/get}}
+        {{else}}
+          {{#get "posts" include="tags,authors" limit="5" order="published_at desc"}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        {{/match}}
+        {{else}}
+        {{!--  --}}
+        {{#match @custom.posts_widget_order "=" "인기순"}}
+          {{#get "posts" filter="published_at:>=now-30d" include="tags,authors" limit="5" order="view_count desc"}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        {{else}}
+          {{#get "posts" include="tags,authors" limit="5" order="published_at desc"}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        {{/match}}
+        {{/if}}
         </div>
+      {{else}}
+      {{#match @custom.posts_widget_active "=" "On"}}
+        <div class="c-home-top-side__wrap">
+          <div class="c-home-top-side__title">
+          {{#if @site.feature_content_section_title}}
+            {{@site.feature_content_section_title}}
+          {{else}}
 
+            {{#if @site.feature_content_section_sort_type}}
+              {{!-- 디자인 커스텀 --}}
+              {{#match @site.feature_content_section_sort_type "=" "poplularest"}}
+              인기 있는 콘텐츠
+              {{else}}
+              최신 콘텐츠
+              {{/match}}
+            {{else}}
+              {{#if @custom.posts_widget_title}}
+                {{@custom.posts_widget_title}}
+              {{else}}
+                {{!-- 테마 커스텀 --}}
+                {{#match @custom.posts_widget_order "=" "인기순"}}
+                최신 콘텐츠
+                {{else}}
+                인기 있는 콘텐츠
+                {{/match}}
+              {{/if}}
+            {{/if}}
+          {{/if}}
+          </div>
+
+        {{#if @site.feature_content_section_sort_type}}
+        {{!--  --}}
+        {{#match @site.feature_content_section_sort_type "=" "poplularest"}}
+          {{#get "posts" filter="published_at:>=now-30d" include="tags,authors" limit="5" order="view_count desc"}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        {{else}}
+          {{#get "posts" include="tags,authors" limit="5" order="published_at desc"}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        {{/match}}
+        {{else}}
+        {{!--  --}}
+        {{#match @custom.posts_widget_order "=" "인기순"}}
+          {{#get "posts" filter="published_at:>=now-30d" include="tags,authors" limit="5" order="view_count desc"}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        {{else}}
+          {{#get "posts" include="tags,authors" limit="5" order="published_at desc"}}
+          {{#if posts}}
+          <div class="c-home-top-side__posts--wrap">
+            <div class="c-home-top-side__posts">
+              {{#foreach posts}}
+                {{> post-card cardFormat="small" }}
+              {{/foreach}}
+            </div>
+          </div>
+          {{/if}}
+          {{/get}}
+        {{/match}}
+        {{/if}}
+        </div>
+      {{/match}}
+      {{/if}}
       </section>
     </div>
   </div>
 </section>
 
+{{#if @site.home_visible_shop_section}}
 <section class="c-home-shop-section">
   <div class="c-home-products-carousel">
     <div class="o-grid">
       <div class="o-grid__col o-grid__col--full">
-        {{> common/products/carousel-section which="home" nav="true" }}
+        {{> common/products/carousel-section which="home" nav="true" title=@site.shop_section_title }}
       </div>
     </div>
   </div>
 </section>
+{{else}}
+  {{#match @custom.shop_section_active_home "=" "On"}}
+  <section class="c-home-shop-section">
+    <div class="c-home-products-carousel">
+      <div class="o-grid">
+        <div class="o-grid__col o-grid__col--full">
+          {{#if @site.shop_section_title}}
+          {{> common/products/carousel-section which="home" nav="true" title=@site.shop_section_title }}
+          {{else}}
+          {{> common/products/carousel-section which="home" nav="true" title=@custom.shop_section_title }}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/match}}
+{{/if}}
 
 {{!-- [Home Category Section 1] --}}
 <div class="c-home-category-section">
@@ -140,7 +314,7 @@
       <section class="c-home-category-side">
         <div class="c-home-subscribe-widget__wrap">
           <div class="c-home-subscribe-widget">
-            {{> home/subscribe-box }}
+            {{> home/subscribe-box widget="true" }}
           </div>
         </div>
       </section>

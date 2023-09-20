@@ -61,6 +61,11 @@ $(document).ready(function() {
   });
 
   // =====================
+  // Responsive Table
+  // =====================
+  $('.post-template .c-content > table').wrap('<div class="c-content__table--wrap">');
+
+  // =====================
   // Images zoom
   // =====================
 

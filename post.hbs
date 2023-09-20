@@ -56,3 +56,30 @@
 
 {{/post}}
 
+{{#if @site.home_visible_shop_section}}
+<section class="c-home-shop-section">
+  <div class="c-home-products-carousel">
+    <div class="o-grid">
+      <div class="o-grid__col o-grid__col--full">
+        {{> common/products/carousel-section which="home" nav="true" title=@site.shop_section_title }}
+      </div>
+    </div>
+  </div>
+</section>
+{{else}}
+  {{#match @custom.shop_section_active_home "=" "On"}}
+  <section class="c-home-shop-section">
+    <div class="c-home-products-carousel">
+      <div class="o-grid">
+        <div class="o-grid__col o-grid__col--full">
+          {{#if @site.shop_section_title}}
+          {{> common/products/carousel-section which="home" nav="true" title=@site.shop_section_title }}
+          {{else}}
+          {{> common/products/carousel-section which="home" nav="true" title=@custom.shop_section_title }}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/match}}
+{{/if}}
