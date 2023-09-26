@@ -11,8 +11,13 @@
       </div>
       <div class="c-home-hero-media__wrap">
         <div class="c-home-hero-media__box">
-          <div class="c-home-hero-media">
-            <img class="c-home-hero-image" src="{{asset 'images/home-hero-media-default.jpg'}}" alt="">
+          <div class="c-home-hero-media{{#if @site.cover_image}} has-media{{else}} empty-media{{/if}}">
+            {{#if @site.cover_image}}
+            <img
+              class="c-home-hero-image"
+              alt="{{#if @site.title}}{{@site.title}}{{/if}}"
+              src="{{@site.cover_image}}">
+            {{/if}}
           </div>
           <div class="c-home-hero-media__shadow"></div>
           <div class="c-home-hero-media__shadow"></div>
@@ -53,8 +58,14 @@
         {{/if}}
         {{/get}}
 
-        {{!-- [Home Top Section] Promotion --}}
-        <div class="c-home-top-promotion c-home-top-promotion--skeleton">프로모션 영역</div>
+        {{!-- [Home Top Section] Promotion Top --}}
+        {{#get "pages" filter="tag:hash-home-promotion-top" limit="1" order="published_at desc"}}
+        {{#if pages}}
+          {{> home/promotion-top }}
+        {{else}}
+        {{!-- <div class="c-home-top-promotion c-home-top-promotion--skeleton">프로모션 영역</div> --}}
+        {{/if}}
+        {{/get}}
       </section>
 
       <section class="c-home-top-side">
@@ -305,9 +316,15 @@
       {{/get}}
       {{/if}}
 
-        {{!-- [Home Category Section] Promotion --}}
+        {{!-- [Home Category Section] Promotion Bottom --}}
         <div class="c-home-category-promotion__wrap">
-          <div class="c-home-category-promotion c-home-category-promotion--skeleton">프로모션 영역</div>
+          {{#get "pages" filter="tag:hash-home-promotion-top" limit="1" order="published_at desc"}}
+          {{#if pages}}
+            {{> home/promotion-bottom }}
+          {{else}}
+          {{!-- <div class="c-home-category-promotion c-home-category-promotion--skeleton">프로모션 영역</div> --}}
+          {{/if}}
+          {{/get}}
         </div>
       </section>
 
