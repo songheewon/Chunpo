@@ -177,19 +177,6 @@ $(document).ready(function() {
       }
     });
   });
-
-  // Header Search form
-  var hSearchForm = document.querySelectorAll(".c-header__search--form");
-  [].map.call(hSearchForm, function (obj, idx) {
-    obj.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var searchParam = $(this).find('.c-header__search--input')[0].value;
-      window.location.href = '/search/' + encodeURIComponent(searchParam.trim());
-      return false;
-    });
-  });
-
 });
 
 /**
