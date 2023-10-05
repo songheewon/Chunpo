@@ -1,8 +1,14 @@
 <link rel="stylesheet" href="{{asset "public/bluedot.css" hasMinFile="true"}}"/>
 <style>
 :root {
+  {{#if @site.accent_color}}
   --accent-color: {{ @site.accent_color }};
-  {{#if @custom.home_hero_background_color}} --home-hero-background-color: {{@custom.home_hero_background_color}}; {{/if}}
+  {{/if}}
+
+  {{#if @site.header_background_color}}
+  --color-header-background: {{@site.header_background_color}};
+  --color-home-hero-background: {{@site.header_background_color}};
+  {{/if}}
 }
 
 * {
