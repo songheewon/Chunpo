@@ -1,7 +1,7 @@
 {
   "name": "chunpo",
   "description": "블루닷 춘포(Chunpo) 테마",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "ghost": ">=4.0.0"
   },

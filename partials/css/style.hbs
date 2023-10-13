@@ -29,4 +29,56 @@
 .bluedot-product-video-wrap .video-js {
   padding-top: 56.25%;
 }
+
+{{#if @site.title_align}}
+.post-template .c-post-header__title {
+  {{#match @site.title_align '=' 'left'}}
+  text-align: left;
+  {{else match @site.title_align '=' 'right'}}
+  text-align: right;
+  {{else match @site.title_align '=' 'center'}}
+  text-align: center;
+  {{else match @site.title_align '=' 'side'}}
+  text-align: justify;
+  {{/match}}
+}
+{{/if}}
+
+{{#if @site.main_align}}
+.post-template .c-content {
+  {{#match @site.main_align '=' 'left'}}
+  text-align: left;
+  {{else match @site.main_align '=' 'right'}}
+  text-align: right;
+  {{else match @site.main_align '=' 'center'}}
+  text-align: center;
+  {{else match @site.main_align '=' 'side'}}
+  text-align: justify;
+  {{/match}}
+}
+{{/if}}
+
+{{#if @site.title_font}}
+.post-template .c-post-header__title {
+  {{#match @site.title_font '=' 'noto_sans_kr'}}
+  font-family: "Noto Sans KR", sans-serif;
+  {{else match @site.title_font '=' 'nanum_gothic'}}
+  font-family: "Nanum Gothic", sans-serif;
+  {{/match}}
+}
+{{/if}}
+
+{{#if @site.main_font}}
+.post-template .c-content,
+.post-template .c-content *,
+.post-template .c-content > *,
+.post-template .c-content ul,
+.post-template .c-content li {
+  {{#match @site.main_font '=' 'noto_sans_kr'}}
+  font-family: "Noto Sans KR", sans-serif;
+  {{else match @site.main_font '=' 'nanum_gothic'}}
+  font-family: "Nanum Gothic", sans-serif;
+  {{/match}}
+}
+{{/if}}
 </style>

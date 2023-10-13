@@ -126,6 +126,10 @@
     }
   }
 
+  > ul {
+    list-style-position: inside;
+  }
+
   // Hide Ghost built-in upgrade call to action box
   .gh-post-upgrade-cta {
     display: none;
