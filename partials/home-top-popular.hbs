@@ -1,5 +1,5 @@
 {{#match @custom.home_top_section_2_type "=" "포스트"}}
-{{#get "posts" filter="published_at:>=now-30d" include="tags,authors" limit="3" order="view_count desc" as |items|}}
+{{#get "posts" filter="published_at:>=now-7d" include="tags,authors" limit="3" order="view_count desc" as |items|}}
 {{#if items}}
   <div class="c-home-popular">
     {{#foreach items}}
@@ -9,7 +9,7 @@
 {{/if}}
 {{/get}}
 {{else}}
-{{#get "products" filter="published_at:>=now-30d" include="tags,authors" limit="3" order="view_count desc" as |items|}}
+{{#get "products" filter="published_at:>=now-7d" include="tags,authors" limit="3" order="view_count desc" as |items|}}
 {{#if items}}
   <div class="c-home-popular">
     {{#foreach items}}
