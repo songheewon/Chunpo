@@ -346,18 +346,21 @@
     }
   }
   &__title {
-    width: 80%;
+    max-width: 730px;
     margin: 0 auto;
     color: white;
     font-weight: 700;
     font-size: 40px;
+    line-height: 50px;
     @include ellipsis(2);
     @include mq($until: desktop) {
       font-size: 30px;
+      line-height: 40px;
+      width: 80%;
     }
   }
   &__excerpt {
-    width: 80%;
+    max-width: 730px;
     margin: 0 auto;
     margin-top: 15px;
     color: white;
@@ -368,6 +371,7 @@
     @include mq($until: desktop) {
       line-height: 25px;
       font-size: 15px;
+      width: 80%;
     }
   }
 }
