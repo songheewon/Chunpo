@@ -12,20 +12,6 @@
   }
 }
 
-.post-template main {
-  padding: 40px 0;
-
-  @include mq($from: desktop) {
-    padding-top: 100px;
-  }
-}
-
-.page-template main {
-  padding: 40px 0;
-}
-
-
-
 .tag-template .c-page__wrap--header {
   background: linear-gradient(180deg, #E4EDE9 0%, rgba(228, 237, 233, 0.00) 100%);
 }
