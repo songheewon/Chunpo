@@ -9,10 +9,8 @@
             data-src='{{ img_url feature_image size=' xxl' }}' />
     </div>
     <div class="c-post-header__title c-post-image-header-template__title_and_excerpt">
-        <div class="c-post-image-header-template__fixed_div">
         <div class="c-post-image-header-template__title">{{title}}</div>
         <div class="c-post-image-header-template__excerpt">{{excerpt}}</div>
-    </div>
     </div>
     </div>
     {{/if}}
@@ -20,9 +18,6 @@
         <div class='o-grid__col o-grid__col--center o-grid__col--9-10-m o-grid__col--3-4-l'>
             <article class='c-{{ post_class }}'>
                 <header class='c-post-header'>
-                    {{#if custom_excerpt}}
-                    <p class='c-post-header__excerpt'>{{ custom_excerpt }}</p>
-                    {{/if}}
 
                     {{#is 'post'}}
                     <div class='c-post-header__meta'>

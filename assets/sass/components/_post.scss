@@ -323,12 +323,12 @@
 
 .c-post-image-header-template {
   position: relative;
-  overflow: hidden;
-  margin-top: -40px;
   &__wrap { 
     width: 100vw;
     height: calc(100vh - 85px);
+    margin-top: -40px;
     margin-bottom: 50px;
+    overflow: hidden;
   }
   &__img {
     width: 100%;
@@ -338,11 +338,12 @@
   }
   &__title_and_excerpt {
     width: 100%;
-  }
-  &__fixed_div {
-    width: 100%;
     position: absolute;
-    bottom: 100px;
+    top: 75%;
+    left: 0;
+    @include mq($until: desktop) {
+      top: 60%;
+    }
   }
   &__title {
     max-width: 730px;
