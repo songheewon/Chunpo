@@ -73,7 +73,7 @@
                     <div class="footer-ex__nav-menu--label">{{#if @site.footer_first_navigation_title}}{{@site.footer_first_navigation_title}}{{else}}Navigation 1{{/if}}</div>
                     {{#if @site.footer_first_navigation}}
                     <ul class="footer-ex__nav-menu--list">
-                        {{navigation type="footerFirst"}}
+                        {{navigation type="footerFirst" isDrawer="no"}}
                     </ul>
                     {{/if}}
                 </div>
@@ -84,7 +84,7 @@
                     <div class="footer-ex__nav-menu--label">{{#if @site.footer_second_navigation_title}}{{@site.footer_second_navigation_title}}{{else}}Navigation 2{{/if}}</div>
                     {{#if @site.footer_second_navigation}}
                     <ul class="footer-ex__nav-menu--list">
-                        {{navigation type="footerSecond"}}
+                        {{navigation type="footerSecond" isDrawer="no"}}
                     </ul>
                     {{/if}}
                 </div>
