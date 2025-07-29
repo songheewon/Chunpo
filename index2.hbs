@@ -1,0 +1,1046 @@
+{{!< default}} {{#contentFor "custom_body_class" }} shop-template{{/contentFor}} {{#if @site.chatbot_general_questions}}
+    <div class="s-products-hero">
+
+    <div class="o-grid" style="padding: 1%;">
+        <div class="o-grid__col o-grid__col--full" style="padding: 0">
+            <div class="s-products-slide__container">
+                <div class="s-products-slide__swiper-button2 s-products-slide__swiper-button--left" style="left: -4%">
+                    <div class="swiper-button swiper-button-prev"
+                        style="background-color: rgba(255, 255, 255, 0.2); width: 40px; height: 40px; border-radius: 0;">
+                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.712405 9.67974L8.72261 17.284C8.90773 17.4601 9.15504 17.557 9.41881 17.557C9.68259 17.557 9.9299 17.4601 10.115 17.284L10.7051 16.7241C11.0889 16.3594 11.0889 15.7662 10.7051 15.4022L3.97868 9.01635L10.7124 2.62354C10.8976 2.44744 11 2.213 11 1.96258C11 1.71216 10.8976 1.47737 10.7124 1.30128L10.1227 0.741396C9.93722 0.565304 9.69027 0.468399 9.4265 0.468399C9.16272 0.468399 8.91541 0.565304 8.73029 0.741396L0.712771 8.35262C0.526921 8.52906 0.425216 8.76489 0.425582 9.01566C0.42485 9.26712 0.526921 9.50295 0.712771 9.67939L0.712405 9.67974Z"
+                                fill="#B9B9B9" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="s-products-slide__main">
+                    <div class="s-products-slide__swiper">
+                        <div class="swiper mobile-swiper" style="">
+                            <div class="swiper-wrapper" style="">
+                                {{#foreach @site.chatbot_general_questions as |question|}}
+                                <div class="swiper-slide" style="aspect-ratio: 16 / 9 !important;" id="question2">
+                                    <div class="s-products-slide-item">
+                                        <div class="s-products-slide-item__media">
+                                            <div class="s-products-slide-item__link--cover">
+                                                {{#if question.url}}
+                                                <img alt="미리보기" class="s-products-slide-item__image"
+                                                    src="{{question.url}}">
+                                                {{/if}}
+                                            </div>
+                                            <div class="s-products-slide-item__info">
+                                                <div class="s-products-slide-item__title">{{question.label}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/foreach}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="s-products-slide__swiper-button2 s-products-slide__swiper-button--right" style="right: -4%">
+                    <div class="swiper-button swiper-button-next"
+                        style="background-color: rgba(255, 255, 255, 0.2); width: 40px; height: 40px; border-radius: 0;">
+                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.2876 8.32026L2.27739 0.715989C2.09227 0.539896 1.84496 0.442993 1.58119 0.442993C1.31741 0.442993 1.0701 0.539896 0.884982 0.715989L0.294872 1.27587C-0.0889006 1.64056 -0.0889006 2.23379 0.294872 2.59778L7.02132 8.98365L0.287555 15.3765C0.102437 15.5526 0 15.787 0 16.0374C0 16.2878 0.102437 16.5226 0.287555 16.6987L0.877299 17.2586C1.06278 17.4347 1.30973 17.5316 1.5735 17.5316C1.83728 17.5316 2.08459 17.4347 2.26971 17.2586L10.2872 9.64738C10.4731 9.47094 10.5748 9.23511 10.5744 8.98434C10.5752 8.73288 10.4731 8.49705 10.2872 8.32061L10.2876 8.32026Z"
+                                fill="#B9B9B9" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            {{#contentFor "scripts"}}
+            <script>
+                const featuredProductSlide = new Swiper(".s-products-slide__swiper .swiper", {
+                    observer: true,
+                    observeParents: true,
+                    breakpoints: {
+                        0: {
+                            slidesPerView: "1",
+                            spaceBetween: 5,
+                        },
+                        1024: {
+                            slidesPerView: "2",
+                            spaceBetween: 20,
+                        },
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.s-products-slide__container .swiper-button-next',
+                        prevEl: '.s-products-slide__container .swiper-button-prev',
+                    },
+                    watchSlidesProgress: true,
+                });
+            </script>
+            {{/contentFor}}
+        </div>
+    </div>
+
+    </div>
+    {{/if}}
+    <div class="ai-chatbot">
+        <div class="ai-chatbot-container" id="ai-chatbot__qna">
+            <div>
+                <div class="ai-chatbot-container2" id="ai-chatbot-container" style="">
+                    {{#if @site.chatbot_title}}
+                    <div class="ai-chatbot__title">{{@site.chatbot_title}}</div>
+                    {{else}}
+                    <div class="ai-chatbot__title">안녕하세요😉 여러분의 <span
+                            class="ai-chatbot__title--brand">{{@site.brand_site_title}}</span> 인공지능🔮 도우미입니다.</div>
+                    <div class="ai-chatbot__title">무엇이든 편하게 질문해주세요✨✨</div>
+                    {{/if}}
+                    {{#if @site.chatbot_notification}}
+                    <div class="ai-chatbot__description">{{@site.chatbot_notification}}</div>
+                    {{else}}
+                    <div class="ai-chatbot__description">여러 자료를 검색해 인공지능이 해답을 찾아주는 생성하는 서비스입니다.</div>
+                    {{/if}}
+                </div>
+                <div class="ai-chatbot__qna" id="ai-container">
+                    {{#foreach @site.chatbot_general_questions as |question|}}
+                    <div class="ai-chatbot__question" id="question">{{question.label}}</div>
+                    {{/foreach}}
+                    <div class="s-products-slide__container" style="display: none; padding: 0 !important;">
+                        <div class="s-products-slide__main" style="width: 100% !important;">
+                            <div class="s-products-slide__swiper">
+                                <div class="swiper mobile-swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <a href="#">
+                                                <div class="related-news__container">
+                                                    <div class="related-news__media">
+                                                        <img class="related-news__img"
+                                                            src="https://tse1.mm.bing.net/th?id=OIP.SOQdc1ySUgGeCOM_nCWacgHaHa&pid=Api&P=0&h=220" />
+                                                    </div>
+                                                    <div class="related-news__info">
+                                                        <div class="related-news__title">제목</div>
+                                                        <div class="related-news__link">LINK영역</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s-products-slide__pagination swiper-pagination"
+                                style="position: relative !important; padding-top: 40px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background: #f4f4f4">
+        <div class="ai-chatbot-input__container">
+            <div class="ai-chatbot-input">
+                <textarea autofocus class="ai-chatbot__message" placeholder="" id="message"
+                    onkeydown='mykeydown()'></textarea>
+                <button class="ai-chatbot__send" type="button" id="send-btn">
+                    <svg width="34px" height="34px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="#fff" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="chatbot-search-rank" style="display: none;">
+        [
+        {{#foreach @site.chatbot_search_rank as |rank|}}
+        { word: {{rank.word}}, cnt: {{rank.cnt}} }
+        {{/foreach}}
+        ]
+    </div>
+    <style>
+        .s-products-slide-item__title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            color: #fff;
+            width: 92%;
+            margin: 0 auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .s-products-slide-item__info {
+            width: 100%;
+            position: absolute;
+            top: 65%;
+            left: 0;
+        }
+
+        .swiper-horizontal {
+            -ms-overflow-style: none;
+        }
+
+        .swiper-horizontal::-webkit-scrollbar {
+            display: none;
+        }
+
+        .swiper-slide {
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .swiper-slide-active,
+        .swiper-slide-active+.swiper-slide {
+            opacity: 1 !important;
+            mask-image: none;
+        }
+
+        .s-products-slide__main {
+            padding: 0;
+        }
+
+        .s-products-slide__container .swiper-slide {
+            height: fit-content;
+        }
+
+        .mobile-swiper {
+            width: 100% !important;
+            padding: 0 5px !important;
+            overflow-x: visible !important;
+            padding-right: 20% !important;
+        }
+
+        .ai-chatbot__answer-from-server>h3 {
+            font-size: 20px;
+        }
+
+        .ai-chatbot__answer-from-server>p {
+            line-height: 32px;
+        }
+
+        .s-products-slide-item {
+            cursor: pointer;
+        }
+
+        .s-products-slide__swiper-button2 {
+            border-radius: none;
+            position: absolute;
+            top: calc(50%) !important;
+        }
+
+        .s-products-hero {
+            background-color: var(--chatbot-background);
+        }
+
+        .s-products-slide__container {
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .s-products-slide-item__title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 27px;
+            letter-spacing: -1px;
+        }
+
+        .s-products-slide-item__media {
+            border-radius: 25px;
+        }
+
+        .ai-chatbot {
+            background-color: #f4f4f4;
+            padding: 40px 0;
+        }
+
+        .ai-chatbot-container {
+            width: 730px;
+            margin: 0 auto;
+            height: 500px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ai-chatbot-container2 {
+            height: 115px;
+            overflow: hidden;
+        }
+
+        .ai-chatbot-container::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .ai-chatbot-container::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .ai-chatbot-container::-webkit-scrollbar-track {
+            background: none;
+        }
+
+        .ai-chatbot-container::-webkit-scrollbar-thumb {
+            border-radius: 50px;
+            background: rgba(68, 170, 255, 0.1);
+        }
+
+        .ai-chatbot-container::-webkit-scrollbar-thumb:hover {
+            background: #1350F1;
+        }
+
+        .mobile-swiper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mobile-swiper::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .mobile-swiper::-webkit-scrollbar-track {
+            background: none;
+        }
+
+        .mobile-swiper::-webkit-scrollbar-thumb {
+            border-radius: 50px;
+            background: rgba(68, 170, 255, 0.1);
+        }
+
+        .mobile-swiper::-webkit-scrollbar-thumb:hover {
+            background: #1350F1;
+        }
+
+
+        .ai-chatbot__title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 32px;
+            letter-spacing: -1px;
+        }
+
+        .ai-chatbot__title--brand {
+            color: #009C82;
+        }
+
+        .ai-chatbot__description {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: -1px;
+        }
+
+        .ai-chatbot__qna {
+            float: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            text-align: end;
+            align-items: flex-end;
+            margin-top: 20px;
+            width: 98%;
+            padding-right: 10px;
+        }
+
+        .ai-chatbot__personal-question {
+            background-color: #1350F1;
+            color: #ffffff;
+            width: fit-content;
+            padding-right: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: start;
+            border-radius: 3px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: -1px;
+            align-self: start;
+            word-break: break-all;
+        }
+
+        .ai-chatbot__answer-from-server {
+            width: 100%;
+            text-align: start;
+            color: #000000;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 32px;
+            letter-spacing: -1px;
+        }
+
+        .ai-chatbot__question {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: -1px;
+            color: #1350F1;
+            border: 1px solid #1350F1;
+            border-radius: 3px;
+            word-break: break-all;
+            padding: 7px 10px;
+            margin: 10px 0;
+            justify-content: end;
+            cursor: pointer;
+        }
+
+        .ai-chatbot__question:hover {
+            background-color: rgba(68, 170, 255, 0.2);
+        }
+
+        .ai-chatbot__loading {
+            width: 100%;
+            text-align: start;
+        }
+
+        .ai-chatbot-input {
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-chatbot-input__container {
+            padding: 30px 0;
+            width: 100%;
+            max-width: 730px;
+            margin: 0 auto;
+        }
+
+        .ai-chatbot__message {
+            resize: none;
+            height: 52px;
+            outline-color: #1350F1;
+            flex-grow: 1;
+            font-size: 16px;
+            display: flex;
+            padding: 14px 12px;
+        }
+
+        .ai-chatbot__send {
+            color: white;
+            border: 0;
+            background-color: #1350F1;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            padding: 8px;
+            flex-shrink: 0;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .related-news__container {
+            width: 250px;
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .related-news__media {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        .related-news__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .related-news__info {
+            padding: 20px 10px;
+        }
+
+        .related-news__title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: -1px;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align: start;
+        }
+
+        .related-news__link {
+            text-align: start;
+            margin-top: 20px;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 13px;
+            letter-spacing: -0.02em;
+            color: #8C8C82;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .o-footer {
+            display: none;
+        }
+
+        .citation {
+            cursor: pointer;
+            color: #1350F1;
+            font-weight: bold;
+        }
+
+        @media (max-width: 720px) {
+            .ai-chatbot-input__container {
+                padding-bottom: 0;
+            }
+
+            .ai-chatbot-container {
+                width: calc(100% - 36px);
+                margin: 0 auto;
+                height: 500px;
+            }
+
+            .ai-chatbot-container2 {
+                height: fit-content;
+            }
+
+            .ai-chatbot__title {
+                font-size: 18px;
+                line-height: 28px;
+            }
+
+            .ai-chatbot__description {
+                font-size: 14px;
+                line-height: 22px;
+            }
+
+            .ai-chatbot-input {
+                width: 100%;
+                align-items: center;
+                background: white;
+                padding: 20px 2.5%;
+            }
+
+            .ai-chatbot__send {
+                padding: 5px 10px;
+                font-size: 13px;
+            }
+
+            .ai-chatbot__personal-question {
+                padding: 7px 10px;
+                font-size: 14px;
+                line-height: 20px;
+                border: 1px solid #1350F1;
+            }
+
+            .ai-chatbot-container::-webkit-scrollbar-thumb:hover {
+                background: #1350F1;
+            }
+
+            .ai-chatbot__question {
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .ai-chatbot__answer-from-server>h3 {
+                font-size: 18px;
+            }
+
+            .ai-chatbot__answer-from-server>p {
+                font-size: 14px;
+                line-height: 28px;
+            }
+
+            .mobile-swiper::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mobile-swiper::-webkit-scrollbar-button {
+                display: none;
+            }
+
+            .mobile-swiper::-webkit-scrollbar-track {
+                background: none;
+            }
+
+            .mobile-swiper::-webkit-scrollbar-thumb {
+                border-radius: 50px;
+                background: rgba(68, 170, 255, 0.1);
+            }
+
+            .mobile-swiper::-webkit-scrollbar-thumb:hover {
+                background: #1350F1;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"
+        integrity="sha512-hUhvpC5f8cgc04OZb55j0KNGh4eh7dLxd/dPSJ5VyzqDWxsayYbojWyl5Tkcgrmb/RVKCRJI1jNlRbVP4WWC4w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const chattingRoom = document.querySelector('#ai-chatbot__qna');
+        const relatedSwiper = new Swiper(".swiper-realted-questions-container .swiper", {
+            pagination: {
+                el: '.swiper-realted-questions-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-realted-questions-pagination .swiper-button-next',
+                prevEl: '.swiper-realted-questions-pagination .swiper-button-prev',
+            },
+            watchSlidesProgress: true,
+        });
+
+        var questions = document.querySelectorAll('#question');
+        for (const question of questions) {
+            question.addEventListener('mouseover', function () {
+                var message = document.querySelector('#message');
+                message.placeholder = question.innerHTML;
+            })
+        }
+
+        var questions2 = document.querySelectorAll('#question2');
+
+        for (const question of questions) {
+            question.addEventListener('click', function () {
+                question.style.backgroundColor = "#1350F1";
+                question.style.color = "#FFFFFF";
+                var message = document.querySelector('#message');
+                message.value = question.innerHTML;
+                addQuestion();
+                apiTest2();
+                message.value = '';
+            })
+        }
+
+        for (const question2 of questions2) {
+            question2.addEventListener('click', function () {
+                const parser = new DOMParser();
+                const htmlDOM = parser.parseFromString(question2.innerHTML, 'text/html');
+                var realQuestion = htmlDOM.querySelector('.s-products-slide-item__title').innerText;
+                message.value = realQuestion;
+                addQuestion();
+                apiTest2();
+                window.scrollTo({
+                    top: document.documentElement.scrollHeight,
+                    behavior: 'smooth'
+                });
+                message.value = '';
+            })
+        }
+
+        async function apiTest2() {
+            var rank = document.querySelector('#chatbot-search-rank').innerHTML;
+            let historyQuestions = []
+            let historyAnswers = []
+            var message = document.querySelector('#message');
+            var chatMessage = message.value;
+            let historyQuestion = document.querySelectorAll('.ai-chatbot__personal-question');
+            let historyAnswer = document.querySelectorAll('.ai-chatbot__answer-from-server');
+            for (var h of historyQuestion) {
+                historyQuestions.push(h.innerText)
+            }
+            for (var h of historyAnswer) {
+                historyAnswers.push(h.innerText)
+            }
+            historyQuestions = historyQuestions.reverse();
+            historyAnswers = historyAnswers.reverse();
+            historyQuestions = historyQuestions.slice(1)
+            if (historyQuestions.length > 3) {
+                historyQuestions = historyQuestions.slice(0, 3);
+            }
+            if (historyAnswers.length > 3) {
+                historyAnswers = historyAnswers.slice(0, 3);
+            }
+            let result = await fetch(`${site_url}/bluedot/api/canary/content/ai-chatbot/chat`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+                body: JSON.stringify({
+                    content: chatMessage,
+                    collection: "test_table",
+                    historyQuestions: historyQuestions,
+                    historyAnswers: historyAnswers
+                })
+            })
+            var reader = result.body.getReader();
+            var container = document.querySelector('#ai-container');
+            const answerDiv = document.createElement('div');
+            answerDiv.className = "ai-chatbot__answer-from-server";
+            container.appendChild(answerDiv);
+            var originalAnswer = "";
+            // var current = moment().format('mmss').toString()
+            var current = new Date()
+            var idx = current.getTime().toString();
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) {
+                    if (temp.sources) {
+                        const relatedDivContainer = document.createElement('div');
+                        relatedDivContainer.className = "s-products-slide__container";
+                        relatedDivContainer.id = `related-${idx}`
+                        relatedDivContainer.style.alignSelf = 'start';
+                        relatedDivContainer.style.width = '100%';
+                        relatedDivContainer.style.padding = '0';
+                        relatedDivContainer.style.marginTop = '8px';
+                        relatedDivContainer.style.marginBottom = '8px';
+
+                        const relatedDivMain = document.createElement('div');
+                        relatedDivMain.className = 's-products-slide__main';
+                        const relatedDivSwiper = document.createElement('div');
+                        relatedDivSwiper.className = 's-products-slide__swiper';
+
+                        const relatedDivMobileSwiper = document.createElement('div');
+                        relatedDivMobileSwiper.className = 'swiper mobile-swiper';
+                        const relatedDivSwiperWrapper = document.createElement('div');
+                        relatedDivSwiperWrapper.className = 'swiper-wrapper';
+                        relatedDivSwiperWrapper.style.gap = '40px';
+                        relatedDivSwiperWrapper.style.paddingBottom = '20px';
+
+                        relatedDivMobileSwiper.appendChild(relatedDivSwiperWrapper);
+                        relatedDivSwiper.appendChild(relatedDivMobileSwiper);
+                        relatedDivMain.appendChild(relatedDivSwiper);
+                        relatedDivContainer.appendChild(relatedDivMain);
+
+                        relatedDivMobileSwiper.addEventListener('wheel', function (event) {
+                            event.preventDefault();
+                            relatedDivMobileSwiper.scrollLeft += event.deltaY;
+                        })
+
+                        for (let i = 0; i < temp.sources.length; i++) {
+                            const swiperSlide = document.createElement('div');
+
+                            const relatedNewsHref = document.createElement('a');
+                            relatedNewsHref.href = temp.sources[i].link;
+                            relatedNewsHref.target = "_blank";
+
+                            swiperSlide.className = 'swiper-slide';
+                            swiperSlide.style.opacity = '1';
+                            swiperSlide.style.width = '250px';
+                            const relatedNewsContainer = document.createElement('div');
+                            relatedNewsContainer.className = 'related-news__container';
+                            const relatedNewsMedia = document.createElement('div');
+                            relatedNewsMedia.className = 'related-news__media';
+                            const relatedNewsImage = document.createElement('img');
+                            relatedNewsImage.className = 'related-news__img';
+                            const result = await fetch(temp.sources[i].link, {
+                                method: "GET",
+                            });
+                            const htmlString = await result.text();
+                            const parser = new DOMParser();
+                            const htmlDOM = parser.parseFromString(htmlString, 'text/html');
+                            const ogImage = htmlDOM.querySelector('meta[property="og:image"]');
+                            if (ogImage) {
+                                relatedNewsImage.src = ogImage.getAttribute('content');
+                            } else {
+                                relatedNewsImage.src = 'https://cdn-icons-png.flaticon.com/512/7305/7305498.png';
+                            }
+
+                            const relatedNewsInfo = document.createElement('div');
+                            relatedNewsInfo.className = 'related-news__info';
+                            const relatedNewsTitle = document.createElement('div');
+                            relatedNewsTitle.className = 'related-news__title';
+                            relatedNewsTitle.innerHTML = temp.sources[i].title;
+                            const relatedNewsLink = document.createElement('div');
+                            relatedNewsLink.className = 'related-news__link';
+                            relatedNewsLink.innerHTML = temp.sources[i].date;
+                            relatedNewsInfo.appendChild(relatedNewsTitle);
+                            relatedNewsInfo.appendChild(relatedNewsLink);
+                            relatedDivSwiperWrapper.appendChild(relatedNewsInfo);
+
+                            relatedNewsMedia.appendChild(relatedNewsImage);
+                            relatedNewsContainer.appendChild(relatedNewsMedia);
+                            relatedNewsContainer.appendChild(relatedNewsInfo);
+                            relatedNewsHref.appendChild(relatedNewsContainer);
+                            swiperSlide.appendChild(relatedNewsHref);
+                            relatedDivSwiperWrapper.appendChild(swiperSlide);
+                        }
+                        container.appendChild(relatedDivContainer);
+                    }
+                    if (temp.suggestors) {
+                        for (let i = 0; i < temp.suggestors.length; i++) {
+                            const suggestorDiv = document.createElement('div');
+                            suggestorDiv.className = "ai-chatbot__question";
+                            suggestorDiv.id = "question";
+                            suggestorDiv.innerHTML = temp.suggestors[i];
+                            container.appendChild(suggestorDiv);
+                            chattingRoom.scrollTop = container.scrollHeight;
+                            suggestorDiv.addEventListener('mouseover', function () {
+                                var message = document.querySelector('#message');
+                                message.placeholder = suggestorDiv.innerHTML;
+                            });
+                            suggestorDiv.addEventListener('click', function () {
+                                suggestorDiv.style.backgroundColor = "#1350F1";
+                                suggestorDiv.style.color = "#FFFFFF";
+                                var message = document.querySelector('#message');
+                                message.value = suggestorDiv.innerHTML;
+                                addQuestion();
+                                apiTest2();
+                                message.value = '';
+                            });
+                        }
+                    }
+                    const loadingButton = document.querySelector('.ai-chatbot__loading');
+                    // loadingButton.remove();
+                    break;
+                }
+                const decoder = new TextDecoder();
+                const str = await decoder.decode(value).split('data: ')[1];
+                var temp = JSON.parse(str);
+                originalAnswer += temp.resp;
+                if (originalAnswer === '죄송하지만, 관련정보를 찾을 수 없습니다.') {
+                    break;
+                }
+                answerDiv.innerHTML = marked.parse(originalAnswer)
+                var index = originalAnswer.match(/(\[[0-9]*\])/g)
+                if (index) {
+                    for (var i of index) {
+                        answerDiv.innerHTML = answerDiv.innerHTML.replaceAll(i, `<a href="#related-${idx}" class="citation"> ${i}</a>`);
+                    }
+                }
+                // answerDiv.innerHTML = marked.parse(answerDiv.innerText)
+                chattingRoom.scrollTop = container.scrollHeight;
+            }
+            if (originalAnswer === '죄송하지만, 관련정보를 찾을 수 없습니다.') {
+                let result2 = await fetch(`${site_url}/bluedot/api/canary/content/ai-chatbot/chat-pdf`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    body: JSON.stringify({
+                        content: chatMessage,
+                        collection: "test_table",
+                        historyQuestions: historyQuestions,
+                        historyAnswers: historyAnswers
+                    })
+                })
+                var reader2 = result2.body.getReader();
+                originalAnswer = '';
+                while (true) {
+                    const { done, value } = await reader2.read();
+                    if (done) {
+                        if (temp.sources) {
+                            const relatedDivContainer = document.createElement('div');
+                            relatedDivContainer.className = "s-products-slide__container";
+                            relatedDivContainer.id = `related-${idx}`
+                            relatedDivContainer.style.alignSelf = 'start';
+                            relatedDivContainer.style.width = '100%';
+                            relatedDivContainer.style.padding = '0';
+                            relatedDivContainer.style.marginTop = '8px';
+                            relatedDivContainer.style.marginBottom = '8px';
+
+                            const relatedDivMain = document.createElement('div');
+                            relatedDivMain.className = 's-products-slide__main';
+                            const relatedDivSwiper = document.createElement('div');
+                            relatedDivSwiper.className = 's-products-slide__swiper';
+
+                            const relatedDivMobileSwiper = document.createElement('div');
+                            relatedDivMobileSwiper.className = 'swiper mobile-swiper';
+                            const relatedDivSwiperWrapper = document.createElement('div');
+                            relatedDivSwiperWrapper.className = 'swiper-wrapper';
+                            relatedDivSwiperWrapper.style.gap = '40px';
+                            relatedDivSwiperWrapper.style.paddingBottom = '20px';
+
+                            relatedDivMobileSwiper.appendChild(relatedDivSwiperWrapper);
+                            relatedDivSwiper.appendChild(relatedDivMobileSwiper);
+                            relatedDivMain.appendChild(relatedDivSwiper);
+                            relatedDivContainer.appendChild(relatedDivMain);
+
+                            relatedDivMobileSwiper.addEventListener('wheel', function (event) {
+                                event.preventDefault();
+                                relatedDivMobileSwiper.scrollLeft += event.deltaY;
+                            })
+
+                            for (let i = 0; i < temp.sources.length; i++) {
+                                const swiperSlide = document.createElement('div');
+
+                                const relatedNewsHref = document.createElement('a');
+                                relatedNewsHref.href = temp.sources[i].link;
+                                relatedNewsHref.target = '_blank';
+
+                                swiperSlide.className = 'swiper-slide';
+                                swiperSlide.style.opacity = '1';
+                                swiperSlide.style.width = '250px';
+                                const relatedNewsContainer = document.createElement('div');
+                                relatedNewsContainer.className = 'related-news__container';
+                                const relatedNewsMedia = document.createElement('div');
+                                relatedNewsMedia.className = 'related-news__media';
+                                const relatedNewsImage = document.createElement('img');
+                                relatedNewsImage.className = 'related-news__img';
+                                relatedNewsImage.src = 'https://cdn-icons-png.flaticon.com/512/4208/4208479.png';
+                                relatedNewsImage.style.width = '50%';
+                                relatedNewsImage.style.marginLeft = '25%';
+                                const relatedNewsInfo = document.createElement('div');
+                                relatedNewsInfo.className = 'related-news__info';
+                                const relatedNewsTitle = document.createElement('div');
+                                relatedNewsTitle.className = 'related-news__title';
+                                relatedNewsTitle.innerHTML = temp.sources[i].file_name;
+                                const relatedNewsLink = document.createElement('div');
+                                // relatedNewsLink.className = 'related-news__link';
+                                // relatedNewsLink.innerHTML = temp.sources[i].text;
+                                relatedNewsInfo.appendChild(relatedNewsTitle);
+                                // relatedNewsInfo.appendChild(relatedNewsLink);
+                                relatedDivSwiperWrapper.appendChild(relatedNewsInfo);
+
+                                relatedNewsMedia.appendChild(relatedNewsImage);
+                                relatedNewsContainer.appendChild(relatedNewsMedia);
+                                relatedNewsContainer.appendChild(relatedNewsInfo);
+                                relatedNewsHref.appendChild(relatedNewsContainer);
+                                swiperSlide.appendChild(relatedNewsHref);
+                                relatedDivSwiperWrapper.appendChild(swiperSlide);
+                            }
+                            container.appendChild(relatedDivContainer);
+                        }
+                        if (temp.suggestors) {
+                            for (let i = 0; i < temp.suggestors.length; i++) {
+                                const suggestorDiv = document.createElement('div');
+                                suggestorDiv.className = "ai-chatbot__question";
+                                suggestorDiv.id = "question";
+                                suggestorDiv.innerHTML = temp.suggestors[i];
+                                container.appendChild(suggestorDiv);
+                                chattingRoom.scrollTop = container.scrollHeight;
+                                suggestorDiv.addEventListener('mouseover', function () {
+                                    var message = document.querySelector('#message');
+                                    message.placeholder = suggestorDiv.innerHTML;
+                                });
+                                suggestorDiv.addEventListener('click', function () {
+                                    suggestorDiv.style.backgroundColor = "#1350F1";
+                                    suggestorDiv.style.color = "#FFFFFF";
+                                    var message = document.querySelector('#message');
+                                    message.value = suggestorDiv.innerHTML;
+                                    addQuestion();
+                                    apiTest2();
+                                    message.value = '';
+                                });
+                            }
+                        }
+                        const loadingButton = document.querySelector('.ai-chatbot__loading');
+                        // loadingButton.remove();
+                        break;
+                    }
+                    const decoder = new TextDecoder();
+                    const str = await decoder.decode(value).split('data: ')[1];
+                    console.log(str)
+                    var temp = JSON.parse(str);
+                    originalAnswer += temp.resp;
+                    answerDiv.innerHTML = marked.parse(originalAnswer)
+                    var index = originalAnswer.match(/(\[[0-9]*\])/g)
+                    if (index) {
+                        for (var i of index) {
+                            answerDiv.innerHTML = answerDiv.innerHTML.replaceAll(i, `<a href="#related-${idx}" class="citation"> ${i}</a>`);
+                        }
+                    }
+                    // answerDiv.innerHTML = marked.parse(answerDiv.innerText)
+                    chattingRoom.scrollTop = container.scrollHeight;
+                }
+            }
+        }
+
+
+        function wait(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function printChars(str) {
+            const answerDiv = document.querySelector('.ai-chatbot__answer-from-server')
+            let index = 0;
+
+            function printNextChar() {
+                if (index < str.length) {
+                    answerDiv.innerHTML += str[index]
+                    index++; // 인덱스 증가
+                    setTimeout(printNextChar, 200); // 500ms 후에 다음 글자 출력
+                }
+            }
+            printNextChar(); // 첫 번째 글자 출력 시작
+        }
+
+        function addQuestion() {
+            var message = document.querySelector('#message');
+            const newQuestion = document.createElement('div');
+            newQuestion.className = "ai-chatbot__personal-question";
+            newQuestion.innerHTML = message.value;
+            var container = document.querySelector('#ai-container');
+            container.appendChild(newQuestion);
+            const beforeAnswer = document.createElement('div');
+            beforeAnswer.className = "ai-chatbot__loading";
+            beforeAnswer.innerHTML = `<svg width="56" height="20" viewBox="0 0 56 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="5" cy="15" r="5" fill="#3C72FF"/>
+                <circle cx="28" cy="5" r="5" fill="#3C72FF"/>
+                <circle cx="51" cy="15" r="5" fill="#3C72FF"/>
+                </svg>`;
+            // container.appendChild(beforeAnswer);
+            chattingRoom.scrollTop = container.scrollHeight;
+        }
+
+        var sendBtn = document.querySelector('#send-btn');
+        sendBtn.addEventListener('click', function () {
+            var message = document.querySelector('#message');
+            if (message.value) {
+                addQuestion();
+                apiTest2();
+                message.value = "";
+            }
+            else {
+                alert("질문을 입력해주세요")
+            }
+        })
+
+        function mykeydown() {
+            if (window.event.keyCode == 13) //enter 일 경우
+            {
+                event.preventDefault()
+                var message = document.querySelector('#message');
+                if (message.value) {
+                    addQuestion();
+                    apiTest2();
+                    message.value = '';
+                }
+                else {
+                    alert("질문을 입력해주세요")
+                }
+            }
+        }
+
+        async function getOgImage(url) {
+            await axios.get(url)
+                .then((response) => {
+                    var content = response.data;
+                    const parser = new DOMParser();
+                    const htmlDOM = parser.parseFromString(content, 'text/html');
+                    const ogImage = htmlDOM.querySelector('meta[property="og:image"]');
+                    if (ogImage) {
+                        return ogImage.getAttribute('content');
+                    }
+                    return 'https://cdn-icons-png.flaticon.com/512/7305/7305498.png';
+                })
+                .catch((error) => console.error(error));
+        }
+
+        window.onload = function () {
+            document.title = site_title + ' - AI검색'
+            randomColor();
+        }
+
+        function randomColor() {
+            var colors = ['#021F59', '#023059', '#92A4A6', '#BF7C63', '#8C4A3B', '#75B2BF', '#16808C', '#3A591B', '#64732F', '#D98B48']
+            var generalQuestions = document.querySelectorAll('.s-products-slide-item__media')
+            for (let question of generalQuestions) {
+                var colorIdx = getRandomInt(10)
+                question.style.backgroundColor = colors[colorIdx]
+            }
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+    </script>

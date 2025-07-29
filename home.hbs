@@ -15,7 +15,7 @@
             {{#if @site.cover_image}}
             <img
               class="c-home-hero-image"
-              alt="{{#if @site.brand_site_title}}{{@site.brand_site_title}}{{/if}}"
+              alt="{{#if @site.title}}{{@site.title}}{{/if}}"
               src="{{@site.cover_image}}">
             {{/if}}
           </div>
@@ -155,8 +155,8 @@
       <section class="c-home-category-main">
 
       {{!-- Post tag section --}}
-      {{#if @custom.tag_slugs_for_home_sections}}
-      {{#get "tags" filter="slug:[{{@custom.tag_slugs_for_home_sections}}]" include="count.posts" }}
+      {{#if @site.tag_names}}
+      {{#get "tags" filter="slug:[{{@site.tag_names}}]" include="count.posts" }}
       {{#if tags}}
         <div class="c-home-categories">
         {{#foreach tags}}
@@ -220,8 +220,8 @@
       <section class="c-home-category-main">
 
       {{!-- Post tag section --}}
-      {{#if @custom.tag_slugs_for_home_sections_2}}
-      {{#get "tags" filter="slug:[{{@custom.tag_slugs_for_home_sections_2}}]" include="count.posts" }}
+      {{#if @site.tag_names2}}
+      {{#get "tags" filter="slug:[{{@site.tag_names2}}]" include="count.posts" }}
       {{#if tags}}
         <div class="c-home-categories">
         {{#foreach tags}}

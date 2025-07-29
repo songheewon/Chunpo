@@ -40,7 +40,7 @@
 
   &__outer {
     background-color: var(--color-header-background);
-    border-bottom: 1px solid #000;
+    border-bottom: .5px solid rgba(0, 0, 0, 0.2);
   }
 
   &__main {
@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     min-width: fit-content;
-    column-gap: 40px;
+    column-gap: 16px;
   }
 
   &__behaviors {
@@ -69,6 +69,10 @@
     max-height: 40px;
     display: flex;
     align-items: center;
+    @include mq($until: desktop) {
+      width: 70%;
+      align-items: center;
+    }
 
     &--img {
       display: block;
@@ -143,6 +147,18 @@
     &--outer {
       display: flex;
       align-items: center;
+      padding: 8px 0px;
+      background-color: var(--color-header-background);
+      border-bottom: 1px solid black;
+      width: 100%;
+      @include mq($until: desktop) {
+        display: none;
+      }
+    }
+    &--outer2 {
+      width: 100%;
+      justify-content: start;
+      display: flex;
     }
   }
 
@@ -234,6 +250,12 @@
     display: none;
   }
 
+  &__main {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+  }
   &__hamburger {
     cursor: pointer;
     width: 40px;

@@ -10,6 +10,15 @@ routes:
   /shop/digital-book/: routes/shop/digital-book
   /shop/etc/: routes/shop/etc
 
+  /blog/:
+    controller: channel
+    template: index
+    filter: tag:-home
+  
+  /ai-chatbot/:
+    controller: channel
+    template: index2
+
 collections:
   /:
     permalink: /{slug}/
